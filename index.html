@@ -1,0 +1,66 @@
+ 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Package Tracking Simulator</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f4f4;
+      padding: 40px;
+    }
+    input, button {
+      padding: 10px;
+      margin-top: 10px;
+      width: 100%;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background: white;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Package Tracking (Sandbox Simulation)</h2>
+
+<p>Enter a test tracking number:</p>
+
+<input type="text" id="trackingNumber" placeholder="e.g. TEST123456">
+
+<button onclick="trackPackage()">Track Package</button>
+
+<div class="result" id="result"></div>
+
+<script>
+function trackPackage() {
+  const tracking = document.getElementById("trackingNumber").value;
+
+  const statuses = [
+    "Shipment Created",
+    "In Transit",
+    "Arrived at Sorting Facility",
+    "Out for Delivery",
+    "Not delivered"
+  ];
+
+  if (tracking === "") {
+    document.getElementById("result").innerHTML =
+      "Please enter a tracking number.";
+    return;
+  }
+
+  const randomStatus =
+    statuses[Math.floor(Math.random() * statuses.length)];
+
+  document.getElementById("result").innerHTML =
+    "<strong>Tracking Number:</strong> " + tracking +
+    "<br><strong>Status:</strong> " + randomStatus +
+    "<br><strong>Environment:</strong> Sandbox/Test";
+}
+</script>
+
+</body>
+</html>
